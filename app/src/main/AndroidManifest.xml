@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="smir.shitab.shitabssuperapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShitabsSuperApp">
         <activity
-            android:name=".MainActivity"
+            android:name=".pages.homelanding.HomeLandingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pages.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.SplashScreen">
             <intent-filter>
