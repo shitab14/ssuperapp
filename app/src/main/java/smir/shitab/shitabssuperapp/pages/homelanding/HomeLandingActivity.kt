@@ -3,34 +3,43 @@ package smir.shitab.shitabssuperapp.pages.homelanding
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import smir.shitab.shitabssuperapp.R
-import smir.shitab.shitabssuperapp.pages.homelanding.homepage.HomeFragment
+import smir.shitab.shitabssuperapp.databinding.ActivityHomeLandingBinding
+import smir.shitab.shitabssuperapp.pages.homelanding.homepage.HomeLandingFragment
 import smir.shitab.shitabssuperapp.pages.homelanding.settingspage.SettingsFragment
 
 class HomeLandingActivity : AppCompatActivity() {
 
-    private lateinit var bottomNavigationView : BottomNavigationView
+//    private lateinit var bottomNavigationView : BottomNavigationView
+    private lateinit var binding: ActivityHomeLandingBinding
+    private lateinit var homeLandingFragment: HomeLandingFragment
+    private lateinit var settingsFragment: SettingsFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home_landing)
+        // View Binding
+        binding = ActivityHomeLandingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val homeFragment = HomeFragment()
-        val settingsFragment = SettingsFragment()
+        // Fragments
+        homeLandingFragment = HomeLandingFragment()
+        settingsFragment = SettingsFragment()
+        setCurrentFragment(homeLandingFragment)
 
-        setCurrentFragment(homeFragment)
+//        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        // Bottom Sheet
+        setupBottomSheet()
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        bottomNavigationView.setOnItemSelectedListener {
+    }
+
+    private fun setupBottomSheet() {
+        binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
-                R.id.home->setCurrentFragment(homeFragment)
+                R.id.home->setCurrentFragment(homeLandingFragment)
                 R.id.settings->setCurrentFragment(settingsFragment)
-
             }
             true
         }
-
     }
 
     private fun setCurrentFragment(fragment: Fragment) {
