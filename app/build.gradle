@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -32,8 +34,11 @@ android {
 
     buildFeatures{
         viewBinding true
-        //noinspection DataBindingWithoutKapt
-        dataBinding true
+//        dataBinding true
+    }
+
+    dataBinding {
+        enabled true
     }
 }
 

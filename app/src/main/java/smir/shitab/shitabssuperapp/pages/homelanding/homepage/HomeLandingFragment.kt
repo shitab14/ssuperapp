@@ -5,20 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import smir.shitab.shitabssuperapp.R
 import smir.shitab.shitabssuperapp.databinding.FragmentHomeLandingBinding
 
-class HomeLandingFragment : Fragment(R.layout.fragment_home_landing) {
+class HomeLandingFragment() : Fragment(R.layout.fragment_home_landing) {
 
     private var _binding : FragmentHomeLandingBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var viewModel: HomeLandingFragViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View {
         _binding = FragmentHomeLandingBinding.inflate(inflater, container, false)
 
-        binding.tvText.text = "Home Landing Fragment"
+        viewModel = ViewModelProvider(this)[HomeLandingFragViewModel::class.java]
+        viewModel.getBandwidthInKbps(requireContext())
+
+        binding.viewmodel = viewModel
 
         return binding.root
     }
