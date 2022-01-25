@@ -3,7 +3,6 @@ package smir.shitab.shitabssuperapp.common
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import android.util.Log
 import android.content.Context.CONNECTIVITY_SERVICE
 import android.os.Build
 
@@ -22,19 +21,19 @@ class NetworkUtil {
             val mobile = conMgr
                 .getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
             if (wifi!!.isAvailable && wifi.isConnected) {
-                Log.e("WIFI_CONNECTED", "WIFI Connected:" + NetworkInfo.State.CONNECTED)
+                DebugingUtil.logInfo("WIFI_CONNECTED", "WIFI Connected:" + NetworkInfo.State.CONNECTED)
                 return true
             }
 
             /** Any Other Network:  */
             else if (mobile != null && mobile.isAvailable && mobile.isConnected) {
-                Log.e("CELLULAR_NET_CONNECTED", "CELLULAR Connected:" + NetworkInfo.State.CONNECTED)
+                DebugingUtil.logInfo("CELLULAR_NET_CONNECTED", "CELLULAR Connected:" + NetworkInfo.State.CONNECTED)
                 return true
             } else if (conMgr.activeNetworkInfo != null && conMgr.activeNetworkInfo!!.isAvailable && conMgr.activeNetworkInfo!!.isConnected) {
-                Log.e("ANY_NET_CONNECTED", "ANY NETWORK Connected:" + NetworkInfo.State.CONNECTED)
+                DebugingUtil.logInfo("ANY_NET_CONNECTED", "ANY NETWORK Connected:" + NetworkInfo.State.CONNECTED)
                 return true
             }
-            Log.e("NO_NET_CONNECTED", "NO NETWORK Connected:")
+            DebugingUtil.logInfo("NO_NET_CONNECTED", "NO NETWORK Connected:")
             return false
         }
 
@@ -50,7 +49,7 @@ class NetworkUtil {
                 }
 //                val downSpeed: Int? = nc?.linkDownstreamBandwidthKbps
                 val upSpeed: Int? = nc?.linkUpstreamBandwidthKbps
-                Log.e("UploadSpeed", "Upload Speed: $upSpeed")
+                DebugingUtil.logInfo("UploadSpeed", "Upload Speed: $upSpeed")
                 return upSpeed ?: 0
             } catch (e: Exception) {
                 return 0
@@ -69,7 +68,7 @@ class NetworkUtil {
                 }
                 val downSpeed: Int? = nc?.linkDownstreamBandwidthKbps
 //                val upSpeed: Int? = nc?.linkUpstreamBandwidthKbps
-                Log.e("DownloadSpeed", "Download Speed: $downSpeed")
+                DebugingUtil.logInfo("DownloadSpeed", "Download Speed: $downSpeed")
                 return downSpeed ?: 0
             } catch (e: Exception) {
                 return 0
