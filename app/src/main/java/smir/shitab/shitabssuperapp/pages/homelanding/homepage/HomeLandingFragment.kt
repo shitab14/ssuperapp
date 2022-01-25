@@ -24,6 +24,10 @@ class HomeLandingFragment() : Fragment(R.layout.fragment_home_landing) {
 
         viewModel = ViewModelProvider(this)[HomeLandingFragViewModel::class.java]
         viewModel.getBandwidthInKbps(requireContext())
+        /*viewModel.uploadSpeedInMbps.observe(requireActivity(),
+            androidx.lifecycle.Observer {
+
+            })*/
 
         binding.viewmodel = viewModel
 
