@@ -13,9 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShitabsSuperApp">
         <activity
+            android:name=".pages.pokedexpage.PokeDexHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".pages.homelanding.HomeLandingActivity"
             android:exported="false"
-            android:theme="@style/Theme.HomeLandingScreen"/>
+            android:theme="@style/Theme.HomeLandingScreen" />
         <activity
             android:name=".pages.splash.SplashActivity"
             android:exported="true"

@@ -12,7 +12,7 @@ class SplashViewModel : ViewModel() {
     fun goToHomePage(context: Context, activityClass: Class<out Activity?>?) = run {
         viewModelScope.launch {
             delay(2000L)
-            NavigationUtil.goToNextActivity(context, activityClass)
+            NavigationUtil.goToNextActivityByClearingHistory(context, activityClass)
         }
     }
 

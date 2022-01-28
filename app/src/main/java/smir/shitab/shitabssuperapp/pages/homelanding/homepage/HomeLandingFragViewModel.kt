@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import smir.shitab.shitabssuperapp.common.NavigationUtil
 import smir.shitab.shitabssuperapp.common.NetworkUtil
+import smir.shitab.shitabssuperapp.pages.pokedexpage.PokeDexHomeActivity
 
 class HomeLandingFragViewModel: ViewModel() {
 
@@ -25,4 +27,9 @@ class HomeLandingFragViewModel: ViewModel() {
             _downloadSpeedInMbps.value = 0.0
         }
     }
+
+    fun goToPokedex(context: Context) {
+        NavigationUtil.goToNextActivity(context, PokeDexHomeActivity::class.java)
+    }
+
 }

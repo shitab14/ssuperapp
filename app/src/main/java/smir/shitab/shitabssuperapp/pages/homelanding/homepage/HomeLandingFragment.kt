@@ -1,5 +1,6 @@
 package smir.shitab.shitabssuperapp.pages.homelanding.homepage
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,7 +32,15 @@ class HomeLandingFragment() : Fragment(R.layout.fragment_home_landing) {
 
         binding.viewmodel = viewModel
 
+        setupOnClick(binding, activity as Context)
+
         return binding.root
+    }
+
+    private fun setupOnClick(binding: FragmentHomeLandingBinding, context: Context) {
+        binding.buttonGoToPokeDex.setOnClickListener {
+            viewModel.goToPokedex(context)
+        }
     }
 
     override fun onDestroyView() {
