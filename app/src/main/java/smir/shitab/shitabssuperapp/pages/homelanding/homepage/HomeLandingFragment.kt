@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import smir.shitab.shitabssuperapp.R
 import smir.shitab.shitabssuperapp.databinding.FragmentHomeLandingBinding
 
@@ -40,6 +41,11 @@ class HomeLandingFragment() : Fragment(R.layout.fragment_home_landing) {
     private fun setupOnClick(binding: FragmentHomeLandingBinding, context: Context) {
         binding.buttonGoToPokeDex.setOnClickListener {
             viewModel.goToPokedex(context)
+        }
+
+        binding.buttonGoToConversionPage.setOnClickListener {
+//            var direction = HomeLandingFragmentDirection
+            findNavController().navigate(R.id.action_homeLandingFragment_to_conversionFragment)
         }
     }
 

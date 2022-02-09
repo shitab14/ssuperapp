@@ -2,7 +2,8 @@ package smir.shitab.shitabssuperapp.pages.homelanding
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import smir.shitab.shitabssuperapp.R
 import smir.shitab.shitabssuperapp.databinding.ActivityHomeLandingBinding
 import smir.shitab.shitabssuperapp.pages.homelanding.homepage.HomeLandingFragment
@@ -10,10 +11,11 @@ import smir.shitab.shitabssuperapp.pages.homelanding.settingspage.SettingsFragme
 
 class HomeLandingActivity : AppCompatActivity() {
 
-//    private lateinit var bottomNavigationView : BottomNavigationView
     private lateinit var binding: ActivityHomeLandingBinding
     private lateinit var homeLandingFragment: HomeLandingFragment
     private lateinit var settingsFragment: SettingsFragment
+
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,29 +26,51 @@ class HomeLandingActivity : AppCompatActivity() {
         // Fragments
         homeLandingFragment = HomeLandingFragment()
         settingsFragment = SettingsFragment()
-        setCurrentFragment(homeLandingFragment)
 
-//        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        // old way
+/*
+        setCurrentFragment(homeLandingFragment)
+*/
+        // new way
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.homeNavHostFragment) as NavHostFragment
+        navController = navHostFragment.navController // Navigation.findNavController(this, R.id.homeNavHostFragment)
+
         // Bottom Sheet
-        setupBottomSheet()
+        setupBottomSheet(navController)
 
     }
 
-    private fun setupBottomSheet() {
+    private fun setupBottomSheet(navController: NavController) {
         binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.home->setCurrentFragment(homeLandingFragment)
-                R.id.settings->setCurrentFragment(settingsFragment)
+            /// old way
+/*            when(it.itemId){
+                R.id.home-> setCurrentFragment(homeLandingFragment)
+                R.id.settingsFragment-> setCurrentFragment(settingsFragment)
             }
+*/
+
+            /// new way
+            setCurrentFragment(it.itemId)
             true
         }
     }
 
+    // old way
+/*
     private fun setCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.flHomeLanding,fragment)
             commit()
         }
+    }
+*/
+
+    private fun setCurrentFragment(fragmentId: Int) {
+        if (fragmentId != navController.currentDestination?.id) {
+            navController.navigate(fragmentId)
+            binding.bottomNavigationView.selectedItemId = fragmentId
+        }
+
     }
 
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home"
+    app:startDestination="@id/homeLandingFragment">
+
+    <fragment
+        android:id="@+id/homeLandingFragment"
+        android:name="smir.shitab.shitabssuperapp.pages.homelanding.homepage.HomeLandingFragment"
+        android:label="HomeLandingFragment"
+        tools:layout="@layout/fragment_home_landing">
+        <action
+            android:id="@+id/action_homeLandingFragment_to_conversionFragment"
+            app:destination="@id/conversionFragment" />
+        <action
+            android:id="@+id/action_homeLandingFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/conversionFragment"
+        android:name="smir.shitab.shitabssuperapp.pages.conversionpage.ConversionFragment"
+        android:label="conversion_fragment"
+        tools:layout="@layout/conversion_fragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="smir.shitab.shitabssuperapp.pages.homelanding.settingspage.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"/>
+</navigation>
