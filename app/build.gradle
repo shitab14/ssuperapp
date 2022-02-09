@@ -89,6 +89,14 @@ dependencies {
     // Jetpack Compose Integration
     implementation "androidx.navigation:navigation-compose:$nav_version"
 
+
+    //RxJava3
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
+    implementation("io.reactivex.rxjava3:rxjava:3.0.4")
+
+    // RxPermissions (https://github.com/tbruyelle/RxPermissions)
+    implementation 'com.github.tbruyelle:rxpermissions:0.12'
+
 }
 
 apollo {

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeLandingFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeLandingFragment_to_cameraExperimentFragment"
+            app:destination="@id/cameraExperimentFragment" />
     </fragment>
     <fragment
         android:id="@+id/conversionFragment"
@@ -27,4 +30,9 @@
         android:name="smir.shitab.shitabssuperapp.pages.homelanding.settingspage.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings"/>
+    <fragment
+        android:id="@+id/cameraExperimentFragment"
+        android:name="smir.shitab.shitabssuperapp.pages.CameraExperimentFragment"
+        android:label="camera_experiment_fragment"
+        tools:layout="@layout/camera_experiment_fragment" />
 </navigation>

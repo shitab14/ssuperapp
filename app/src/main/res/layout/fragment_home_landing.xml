@@ -55,7 +55,12 @@
             app:layout_constraintTop_toBottomOf="@+id/clInternetStatus"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_margin="15dp"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:alignmentMode="alignBounds"
+            android:orientation="horizontal"
+            android:background="#FFAB91">
 
             <Button
                 android:id="@+id/buttonGoToPokeDex"
@@ -70,6 +75,13 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Conversions"/>
+
+            <Button
+                android:id="@+id/buttonGoToExperimentalCameraPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Camera"/>
 
         </GridLayout>
 
