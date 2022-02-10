@@ -7,25 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import smir.shitab.shitabssuperapp.R
+import smir.shitab.shitabssuperapp.base.fragment.BaseFragment
+import smir.shitab.shitabssuperapp.databinding.FragmentCameraExperimentBinding
 
-class CameraExperimentFragment : Fragment() {
+class CameraExperimentFragment : BaseFragment<FragmentCameraExperimentBinding>() {
 
-    companion object {
-        fun newInstance() = CameraExperimentFragment()
-    }
+    override val layoutResourceId: Int
+        get() = R.layout.fragment_camera_experiment
 
     private lateinit var viewModel: CameraExperimentViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.camera_experiment_fragment, container, false)
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CameraExperimentViewModel::class.java)
+        viewModel = ViewModelProvider(this)[CameraExperimentViewModel::class.java]
         // TODO: Use the ViewModel
     }
 

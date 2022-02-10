@@ -11,32 +11,32 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.tbruyelle.rxpermissions3.RxPermissions
 import smir.shitab.shitabssuperapp.R
+import smir.shitab.shitabssuperapp.base.fragment.BaseFragment
 import smir.shitab.shitabssuperapp.databinding.FragmentHomeLandingBinding
 
-class HomeLandingFragment() : Fragment(R.layout.fragment_home_landing) {
+class HomeLandingFragment : BaseFragment<FragmentHomeLandingBinding>() {
 
-    private var _binding : FragmentHomeLandingBinding? = null
-    private val binding get() = _binding!!
+//    private var _binding : FragmentHomeLandingBinding? = null
+//    private val binding get() = _binding!!
 
     private lateinit var viewModel: HomeLandingFragViewModel
     private lateinit var rxPermissions: RxPermissions
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
-        rxPermissions = RxPermissions(this) // where this is an Activity or Fragment instance
 
-        _binding = FragmentHomeLandingBinding.inflate(inflater, container, false)
+    override val layoutResourceId: Int
+        get() = R.layout.fragment_home_landing
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        rxPermissions = RxPermissions(this) // where this is an Activity or Fragment instance
 
         viewModel = ViewModelProvider(this)[HomeLandingFragViewModel::class.java]
         viewModel.getBandwidthInKbps(requireContext())
 
-        binding.viewmodel = viewModel
+        dataBinding/*binding*/.viewmodel = viewModel
 
-        setupOnClick(binding, activity as Context)
-
-        return binding.root
+        setupOnClick(dataBinding/*binding*/, activity as Context)
     }
 
     private fun setupOnClick(binding: FragmentHomeLandingBinding, context: Context) {
@@ -73,7 +73,7 @@ class HomeLandingFragment() : Fragment(R.layout.fragment_home_landing) {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+//        _binding = null
     }
 
 }

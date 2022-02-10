@@ -24,7 +24,7 @@
         android:id="@+id/conversionFragment"
         android:name="smir.shitab.shitabssuperapp.pages.conversionpage.ConversionFragment"
         android:label="conversion_fragment"
-        tools:layout="@layout/conversion_fragment" />
+        tools:layout="@layout/fragment_conversion" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="smir.shitab.shitabssuperapp.pages.homelanding.settingspage.SettingsFragment"
@@ -34,5 +34,5 @@
         android:id="@+id/cameraExperimentFragment"
         android:name="smir.shitab.shitabssuperapp.pages.CameraExperimentFragment"
         android:label="camera_experiment_fragment"
-        tools:layout="@layout/camera_experiment_fragment" />
+        tools:layout="@layout/fragment_camera_experiment" />
 </navigation>

@@ -6,26 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import smir.shitab.shitabssuperapp.R
+import smir.shitab.shitabssuperapp.base.fragment.BaseFragment
 import smir.shitab.shitabssuperapp.databinding.FragmentSettingsBinding
 
-class SettingsFragment : Fragment(R.layout.fragment_settings) {
+class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
 
-    private var _binding : FragmentSettingsBinding? = null
-    private val binding get() = _binding!!
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+//    private var _binding : FragmentSettingsBinding? = null
+//    private val binding get() = _binding!!
 
-        binding.tvText.text = "Settings Fragment"
+    override val layoutResourceId: Int
+        get() = R.layout.fragment_settings
 
-        return binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        dataBinding/*binding*/.tvText.text = "Settings Fragment"
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+//        _binding = null
     }
 
 }

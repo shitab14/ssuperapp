@@ -11,9 +11,12 @@ import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import smir.shitab.shitabssuperapp.GetPokemonsQuery
 import smir.shitab.shitabssuperapp.R
+import smir.shitab.shitabssuperapp.base.activity.BaseActivity
+import smir.shitab.shitabssuperapp.databinding.ActivityPokeDexHomeBinding
 import smir.shitab.shitabssuperapp.network.GraphQLClient
+import smir.shitab.shitabssuperapp.pages.homelanding.HomeLandingActivityViewModel
 
-class PokeDexHomeActivity : AppCompatActivity() {
+class PokeDexHomeActivity : BaseActivity<ActivityPokeDexHomeBinding>() {
     lateinit var apolloClient: ApolloClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +26,8 @@ class PokeDexHomeActivity : AppCompatActivity() {
         val okHttpClient: OkHttpClient = OkHttpClient.Builder().build()
 
         apolloClient = GraphQLClient.apolloClient(this, "https://graphql-pokeapi.vercel.app/api/graphql")
+
+        showLoader()
 
         GlobalScope.launch {
             delay(1000)
@@ -34,10 +39,14 @@ class PokeDexHomeActivity : AppCompatActivity() {
     private suspend fun getData() {
         val response = apolloClient.query(
             GetPokemonsQuery(
-                Optional.presentIfNotNull(1), // limit
-                Optional.presentIfNotNull(0) // offset
+                Optional.presentIfNotNull(5), // limit
+                Optional.presentIfNotNull(5) // offset
             )).execute()
         Log.d("PokeList", "Success: ${response.data}")
+        hideLoader()
     }
+
+    override val layoutResourceId: Int
+        get() = R.layout.activity_poke_dex_home
 
 }
