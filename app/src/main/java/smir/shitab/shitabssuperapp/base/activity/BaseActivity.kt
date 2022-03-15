@@ -36,14 +36,22 @@ abstract class BaseActivity<DataBinding: ViewDataBinding> : AppCompatActivity() 
     fun getContext(): Context = this
 
     fun showLoader() {
-        runOnUiThread {
-            if (!loaderDialog.isShowing) loaderDialog.show()
+        try {
+            runOnUiThread {
+                if (!loaderDialog.isShowing) loaderDialog.show()
+            }
+        } catch (e: Exception) {
+            // todo Shitab
         }
     }
 
     fun hideLoader() {
-        runOnUiThread {
-            if (loaderDialog.isShowing) loaderDialog.dismiss()
+        try {
+            runOnUiThread {
+                if (loaderDialog.isShowing) loaderDialog.dismiss()
+            }
+        } catch (e: Exception) {
+            // todo Shitab
         }
     }
 

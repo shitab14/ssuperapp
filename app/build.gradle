@@ -58,7 +58,7 @@ dependencies {
     implementation "com.airbnb.android:lottie:3.4.0"
 
     // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
@@ -67,6 +67,10 @@ dependencies {
 
     // GraphQL
     implementation "com.apollographql.apollo3:apollo-runtime:3.0.0"
+    // In Memory Normalized Cache
+    implementation "com.apollographql.apollo3:apollo-normalized-cache:3.0.0"
+    // SQLite Cache
+    implementation "com.apollographql.apollo3:apollo-normalized-cache-sqlite:3.0.0"
 
     // Retrofit
     def retrofit_version = "2.6.2"
