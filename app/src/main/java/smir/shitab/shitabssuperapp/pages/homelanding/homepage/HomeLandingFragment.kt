@@ -69,6 +69,10 @@ class HomeLandingFragment : BaseFragment<FragmentHomeLandingBinding>() {
                     }
                 }
         }
+
+        binding.buttonGoToMapPage.setOnClickListener {
+            findNavController().navigate(R.id.action_homeLandingFragment_to_mapFragment)
+        }
     }
 
     override fun onDestroyView() {

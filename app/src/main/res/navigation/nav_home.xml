@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeLandingFragment_to_cameraExperimentFragment"
             app:destination="@id/cameraExperimentFragment" />
+        <action
+            android:id="@+id/action_homeLandingFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/conversionFragment"
@@ -35,4 +38,9 @@
         android:name="smir.shitab.shitabssuperapp.pages.CameraExperimentFragment"
         android:label="camera_experiment_fragment"
         tools:layout="@layout/fragment_camera_experiment" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="smir.shitab.shitabssuperapp.pages.mappage.MapFragment"
+        android:label="map_fragment"
+        tools:layout="@layout/fragment_map" />
 </navigation>

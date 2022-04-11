@@ -13,6 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShitabsSuperApp">
+
+        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+            android:value="YOUR_MAP_API" />
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_GEO_API"/>
+
         <activity
             android:name=".pages.pokedexpage.PokeDexHomeActivity"
             android:exported="false" />
